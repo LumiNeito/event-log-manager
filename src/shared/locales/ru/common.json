@@ -1,0 +1,37 @@
+
+
+{
+  "title": "События безопасности",
+  "search_placeholder": "Введите значение",
+  "page": "страница",
+  "status": {
+    "login": "Вход",
+    "logout": "Выход",
+    "fileAccess": "Доступ к файлу",
+    "placeholder": "Статус"
+  },
+  "table": {
+    "code": "Код",
+    "clientId": "ИД клиента",
+    "stationName": "Имя станции",
+    "address": "Адрес",
+    "version": "Версия",
+    "conf": "Конф.",
+    "state": "Состояние",
+    "status": "Статус",
+    "date": "Время отправки"
+  },
+  "details": {
+    "userInfo": "Информация о пользователе",
+    "code": "Код",
+    "clientId": "ИД клиента",
+    "stationName": "Имя станции",
+    "ipAddress": "IP-адрес",
+    "version": "Версия",
+    "effectiveConfig": "Эффективная конфигурация",
+    "appliedConfig": "Применяемая конфигурация",
+    "status": "Статус",
+    "stationState": "Состояние станции",
+    "statusDate": "Дата состояния"
+  }
+}

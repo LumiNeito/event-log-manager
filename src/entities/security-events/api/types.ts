@@ -9,8 +9,8 @@ export interface EventItem {
     address: string;
     version: string;
     conf: string;
-    state: string;
     status: EventStatus
+    date: Date
 }
 
 export interface PaginatedResponse<T> {

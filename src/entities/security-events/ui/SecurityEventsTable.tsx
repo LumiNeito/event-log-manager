@@ -1,8 +1,8 @@
 
 import { Table } from "antd"
-import { columns } from "../model/table-columns";
+import { getSecurityEventsColumns } from "../model/table-columns";
 import type { EventItem } from "../api/types";
-
+import { useTranslation } from "react-i18next";
 
 interface SecurityEventsTableProps {
     data?: EventItem[],
@@ -12,32 +12,59 @@ interface SecurityEventsTableProps {
     total?: number,
     onPageChange: (page: number) => void,
     onPageSizeChange: (pageSize: number) => void,
-    onRowClick: (id: string) => void
+    onRowClick: (id: string) => void,
+    onSortChange?: (field: string, order: 'asc' | 'desc') => void;
+    height?: number;
+    sortOrder: 'asc' | 'desc'
 }
 
-
-
-export const SecurityEventsTable = ({ data, isLoading, page, pageSize, total, onPageChange, onPageSizeChange, onRowClick }: SecurityEventsTableProps) => {
+export const SecurityEventsTable = ({
+    data,
+    isLoading,
+    page,
+    pageSize,
+    total,
+    sortOrder,
+    onPageChange,
+    onPageSizeChange,
+    onRowClick,
+    onSortChange,
+    height = 500 }: SecurityEventsTableProps) => {
+    const { t } = useTranslation();
 
     return (
         <>
             <Table dataSource={data}
                 rowKey="key"
+                scroll={{ y: height, x: 'max-content' }}
+                sticky
                 pagination={{
                     current: page,
                     pageSize,
                     total,
                     onChange: (nextPage) => onPageChange(nextPage),
-                    onShowSizeChange: (_current, size) => onPageSizeChange(size)
+                    onShowSizeChange: (_current, size) => onPageSizeChange(size),
+                    locale: {
+                        items_per_page: ''
+                    }
                 }}
-                columns={columns}
+                onChange={(_, __, sorter) => {
+                    const sortObj = Array.isArray(sorter) ? sorter[0] : sorter;
+                    if (sortObj && sortObj.field === 'date' && onSortChange) {
+                        const order = sortObj.order === 'ascend' ? 'asc' : 'desc';
+                        if (sortOrder === order) return
+
+                        onSortChange(sortObj.field, order);
+                    }
+                }}
+
+                columns={getSecurityEventsColumns(t)}
                 loading={isLoading}
                 onRow={(record) => ({
                     onClick: () => onRowClick(record.id),
                     style: { cursor: 'pointer' },
                 })}
             />
-
         </>
     )
 }

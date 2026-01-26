@@ -6,8 +6,8 @@ import { SecurityEventsWidget } from './widgets/security-events/ui/SecurityEvent
 function App() {
   return (
     <Layout style={{ minHeight: '100vh', width: '100%' }}>
-      <Header />
-      <Content>
+      <Header><b>SecurTrack</b> – Отслеживание безопасности</Header>
+      <Content style={{ padding: '24px 48px 0px 48px' }}>
         <SecurityEventsWidget />
       </Content>
     </Layout>

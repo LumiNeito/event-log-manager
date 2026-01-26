@@ -1,11 +1,12 @@
 import { generateEvent } from './generator';
-import { type EventItem, type PaginatedResponse } from './types';
+import type { EventItem, PaginatedResponse } from './types';
 
 interface FetchEventsParams {
     page: number;
     pageSize: number;
     status?: string | null;
     stationName?: string;
+    sortByDate?: 'asc' | 'desc';
 }
 
 const TOTAL_ITEMS = 137;
@@ -13,7 +14,7 @@ const TOTAL_ITEMS = 137;
 export const fetchEventsMock = (
     params: FetchEventsParams,
 ): Promise<PaginatedResponse<EventItem>> => {
-    const { page, pageSize, status, stationName } = params;
+    const { page, pageSize, status, stationName, sortByDate = "asc" } = params;
 
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -32,6 +33,16 @@ export const fetchEventsMock = (
                 filteredData = filteredData.filter(event =>
                     event.stationName.toLowerCase().includes(searchLower)
                 );
+            }
+
+            if (sortByDate) {
+                filteredData.sort((a, b) => {
+                    if (sortByDate === 'asc') {
+                        return a.date.getTime() - b.date.getTime();
+                    } else {
+                        return b.date.getTime() - a.date.getTime();
+                    }
+                });
             }
 
             const startIndex = (page - 1) * pageSize;

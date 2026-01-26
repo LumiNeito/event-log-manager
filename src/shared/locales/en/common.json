@@ -1,0 +1,10 @@
+
+{
+  "title": "Security Events",
+  "search_placeholder": "Enter value",
+  "status": {
+    "login": "Login",
+    "logout": "Logout",
+    "fileAccess": "File access"
+  }
+}

@@ -1,13 +1,17 @@
 import { create } from 'zustand'
 
+export const INITIAL_FILTERS = {
+    status: null,
+    stationInput: '',
+    stationSearch: '',
+}
+
 interface SecurityFiltersStore {
     status: string | null;
     setStatus: (status: string) => void;
     resetFilters: () => void;
-
     stationInput: string;
     setStationInput: (value: string) => void;
-
     stationSearch: string;
 }
 
@@ -15,12 +19,8 @@ export const useSecurityFiltersStore = create<SecurityFiltersStore>((set) => {
     let searchTimeout: ReturnType<typeof setTimeout> | null = null;
 
     return {
-        status: null,
-        stationInput: '',
-        stationSearch: '',
-
+        ...INITIAL_FILTERS,
         setStatus: (status) => set({ status }),
-
         setStationInput: (value: string) => {
             set({ stationInput: value });
 
