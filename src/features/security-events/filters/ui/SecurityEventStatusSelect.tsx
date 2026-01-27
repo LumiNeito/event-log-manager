@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 interface SecurityEventsStatusSelect {
     value: string | null;
-    onChange: (status: string) => void;
+    onChange: (status: string | null) => void;
 }
 
 export const SecurityEventStatusSelect = ({ value, onChange }: SecurityEventsStatusSelect) => {
@@ -20,7 +20,9 @@ export const SecurityEventStatusSelect = ({ value, onChange }: SecurityEventsSta
             placeholder={t('status.placeholder')}
             allowClear
             style={{ width: 120 }}
-            onChange={onChange}
+            onChange={(value) => {
+                onChange(value ?? null);
+            }}
             options={options}
             value={value}
         />

@@ -8,10 +8,11 @@ export const INITIAL_FILTERS = {
 
 interface SecurityFiltersStore {
     status: string | null;
-    setStatus: (status: string) => void;
+    setStatus: (status: string | null) => void;
     resetFilters: () => void;
     stationInput: string;
     setStationInput: (value: string) => void;
+    setStationSearch: (value: string) => void;
     stationSearch: string;
 }
 
@@ -20,7 +21,7 @@ export const useSecurityFiltersStore = create<SecurityFiltersStore>((set) => {
 
     return {
         ...INITIAL_FILTERS,
-        setStatus: (status) => set({ status }),
+        setStatus: (status: string | null) => set({ status }),
         setStationInput: (value: string) => {
             set({ stationInput: value });
 
@@ -28,6 +29,12 @@ export const useSecurityFiltersStore = create<SecurityFiltersStore>((set) => {
             searchTimeout = setTimeout(() => {
                 set({ stationSearch: value });
             }, 500);
+        },
+        setStationSearch: (value: string) => {
+            set({
+                stationSearch: value,
+                stationInput: value
+            })
         },
 
         resetFilters: () => set({ status: null, stationInput: '', stationSearch: '' }),

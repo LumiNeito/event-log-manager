@@ -6,5 +6,4 @@ export const selectHasActiveFilters = (state: {
     stationSearch: string;
 }) =>
     state.status !== INITIAL_FILTERS.status ||
-    state.stationInput !== INITIAL_FILTERS.stationInput ||
     state.stationSearch !== INITIAL_FILTERS.stationSearch;
