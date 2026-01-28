@@ -22,7 +22,7 @@ export const SecurityEventsWidget = () => {
         setPage(1);
     }, [status, searchString]);
 
-    const { data, isLoading } = useQuery({
+    const { data, isLoading, isError, refetch } = useQuery({
         queryKey: ['events', page, pageSize, status, searchString, sortField, sortOrder],
         queryFn: () =>
             fetchEventsMock({
@@ -34,6 +34,8 @@ export const SecurityEventsWidget = () => {
             }),
     });
 
+
+
     const currentEvent = data?.data.find((el) => el.id === selectedId)
 
     return (
@@ -42,6 +44,8 @@ export const SecurityEventsWidget = () => {
             <SecurityEventsTable
                 data={data?.data}
                 isLoading={isLoading}
+                isError={isError}
+                refetch={refetch}
                 page={page}
                 pageSize={pageSize}
                 total={data?.total}

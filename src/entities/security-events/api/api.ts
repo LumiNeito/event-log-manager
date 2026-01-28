@@ -10,14 +10,20 @@ interface FetchEventsParams {
 }
 
 const TOTAL_ITEMS = 137;
+const ERROR_PROBABILITY = 0.5;
 
 export const fetchEventsMock = (
     params: FetchEventsParams,
 ): Promise<PaginatedResponse<EventItem>> => {
     const { page, pageSize, status, searchString, sortByDate = "asc" } = params;
 
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
+            if (Math.random() < ERROR_PROBABILITY) {
+                reject(new Error('Mock API error: failed to fetch security events'));
+                return;
+            }
+
             const allData: EventItem[] = [];
 
             for (let i = 0; i < TOTAL_ITEMS; i += 1) {

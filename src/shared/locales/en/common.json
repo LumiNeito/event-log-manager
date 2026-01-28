@@ -18,7 +18,11 @@
     "conf": "Config",
     "state": "State",
     "status": "Status",
-    "date": "Send Time"
+    "date": "Send Time",
+    "noData": "No Data",
+    "errorTitle": "Failed to load",
+    "errorText": "We are fixing the issue. Please try again or come back later.",
+    "errorButton": "Try again"
   },
   "details": {
     "title": "Workstation Status",

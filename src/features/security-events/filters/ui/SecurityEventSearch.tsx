@@ -12,7 +12,9 @@ interface SecurityEventSearchProps {
 
 export const SecurityEventSearch = ({ value, onChange }: SecurityEventSearchProps) => {
     const { t } = useTranslation()
+
     const handleChange: SearchProps['onChange'] = (e) => onChange(e.currentTarget.value);
+
     return (
         <Search placeholder={t('searchPlaceholder')} onChange={handleChange} value={value} style={{ width: 200 }} />
     )
