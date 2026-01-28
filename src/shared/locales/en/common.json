@@ -36,6 +36,7 @@
     "appliedConfig": "Applied Configuration",
     "status": "Status",
     "stationState": "Station State",
-    "statusDate": "Status Date"
+    "statusDate": "Status Date",
+    "userName": "Client Name"
   }
 }

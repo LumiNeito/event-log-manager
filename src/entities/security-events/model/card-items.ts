@@ -17,6 +17,11 @@ export const getSecurityEventDescriptionItems = (
             children: data?.id ?? '',
         },
         {
+            key: 'userName',
+            label: t('details.userName'),
+            children: data?.userName ?? '',
+        },
+        {
             key: 'stationName',
             label: t('details.stationName'),
             children: data?.stationName ?? '',
@@ -30,11 +35,6 @@ export const getSecurityEventDescriptionItems = (
             key: 'version',
             label: t('details.version'),
             children: data?.version ?? '',
-        },
-        {
-            key: 'effectiveConfig',
-            label: t('details.effectiveConfig'),
-            children: data?.conf ?? '',
         },
         {
             key: 'appliedConfig',

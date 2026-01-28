@@ -38,6 +38,7 @@
     "appliedConfig": "Применяемая конфигурация",
     "status": "Статус",
     "stationState": "Состояние станции",
-    "statusDate": "Дата состояния"
+    "statusDate": "Дата состояния",
+    "userName": "Имя клиента"
   }
 }
