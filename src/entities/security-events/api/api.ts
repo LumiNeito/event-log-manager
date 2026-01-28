@@ -5,7 +5,7 @@ interface FetchEventsParams {
     page: number;
     pageSize: number;
     status?: string | null;
-    stationName?: string;
+    searchString?: string;
     sortByDate?: 'asc' | 'desc';
 }
 
@@ -14,7 +14,7 @@ const TOTAL_ITEMS = 137;
 export const fetchEventsMock = (
     params: FetchEventsParams,
 ): Promise<PaginatedResponse<EventItem>> => {
-    const { page, pageSize, status, stationName, sortByDate = "asc" } = params;
+    const { page, pageSize, status, searchString, sortByDate = "asc" } = params;
 
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -28,10 +28,10 @@ export const fetchEventsMock = (
                 ? allData.filter(event => event.status === status)
                 : allData;
 
-            if (stationName && stationName.trim() !== '') {
-                const searchLower = stationName.toLowerCase();
+            if (searchString && searchString.trim() !== '') {
+                const searchLower = searchString.toLowerCase();
                 filteredData = filteredData.filter(event =>
-                    event.stationName.toLowerCase().includes(searchLower)
+                    event.stationName.toLowerCase().includes(searchLower) || event.userName.toLowerCase().includes(searchLower)
                 );
             }
 

@@ -2,18 +2,18 @@ import { create } from 'zustand'
 
 export const INITIAL_FILTERS = {
     status: null,
-    stationInput: '',
-    stationSearch: '',
+    searchInput: '',
+    searchString: '',
 }
 
 interface SecurityFiltersStore {
     status: string | null;
     setStatus: (status: string | null) => void;
     resetFilters: () => void;
-    stationInput: string;
-    setStationInput: (value: string) => void;
-    setStationSearch: (value: string) => void;
-    stationSearch: string;
+    searchInput: string;
+    setSearchInput: (value: string) => void;
+    setSearchString: (value: string) => void;
+    searchString: string;
 }
 
 export const useSecurityFiltersStore = create<SecurityFiltersStore>((set) => {
@@ -22,21 +22,21 @@ export const useSecurityFiltersStore = create<SecurityFiltersStore>((set) => {
     return {
         ...INITIAL_FILTERS,
         setStatus: (status: string | null) => set({ status }),
-        setStationInput: (value: string) => {
-            set({ stationInput: value });
+        setSearchInput: (value: string) => {
+            set({ searchInput: value });
 
             if (searchTimeout) clearTimeout(searchTimeout);
             searchTimeout = setTimeout(() => {
-                set({ stationSearch: value });
+                set({ searchString: value });
             }, 500);
         },
-        setStationSearch: (value: string) => {
+        setSearchString: (value: string) => {
             set({
-                stationSearch: value,
-                stationInput: value
+                searchString: value,
+                searchInput: value
             })
         },
 
-        resetFilters: () => set({ status: null, stationInput: '', stationSearch: '' }),
+        resetFilters: () => set({ status: null, searchInput: '', searchString: '' }),
     };
 });

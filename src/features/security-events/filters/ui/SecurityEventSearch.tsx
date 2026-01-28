@@ -1,4 +1,5 @@
 import { Input, type GetProps } from "antd";
+import { useTranslation } from "react-i18next";
 
 type SearchProps = GetProps<typeof Input.Search>;
 
@@ -10,8 +11,9 @@ interface SecurityEventSearchProps {
 }
 
 export const SecurityEventSearch = ({ value, onChange }: SecurityEventSearchProps) => {
+    const { t } = useTranslation()
     const handleChange: SearchProps['onChange'] = (e) => onChange(e.currentTarget.value);
     return (
-        <Search placeholder="Введите значение" onChange={handleChange} value={value} style={{ width: 200 }} />
+        <Search placeholder={t('searchPlaceholder')} onChange={handleChange} value={value} style={{ width: 200 }} />
     )
 }

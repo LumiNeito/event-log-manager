@@ -9,24 +9,27 @@ import { useSecurityEventsTableStore } from "../../../features/security-events/t
 import { useSecurityEventCardStore } from "../../../features/security-events/view-control/model/store";
 import { useSecurityEventsUrlSync } from "../../../features/security-events/url-sync/useSecurityEventsUrlSync";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 export const SecurityEventsWidget = () => {
     const { t } = useTranslation()
     const { open, setShowEventCard, setCloseEventCard, selectedId, setSelectedId } = useSecurityEventCardStore()
-
     useSecurityEventsUrlSync()
-
-    const { status, stationSearch } = useSecurityFiltersStore()
+    const { status, searchString } = useSecurityFiltersStore()
     const { page, pageSize, sortField, sortOrder, setPage, setPageSize, setSortField, setSortOrder } = useSecurityEventsTableStore()
 
+    useEffect(() => {
+        setPage(1);
+    }, [status, searchString]);
+
     const { data, isLoading } = useQuery({
-        queryKey: ['events', page, pageSize, status, stationSearch, sortField, sortOrder],
+        queryKey: ['events', page, pageSize, status, searchString, sortField, sortOrder],
         queryFn: () =>
             fetchEventsMock({
                 page,
                 pageSize,
                 status: status,
-                stationName: stationSearch,
+                searchString: searchString,
                 sortByDate: sortField === 'date' && sortOrder ? sortOrder : undefined
             }),
     });

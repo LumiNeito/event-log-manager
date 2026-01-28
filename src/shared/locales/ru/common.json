@@ -2,7 +2,7 @@
 
 {
   "title": "События безопасности",
-  "search_placeholder": "Введите значение",
+  "searchPlaceholder": "Имя клиента, имя станции",
   "page": "страница",
   "status": {
     "login": "Вход",
@@ -13,6 +13,7 @@
   "table": {
     "code": "Код",
     "clientId": "ИД клиента",
+    "userName": "Имя клиента",
     "stationName": "Имя станции",
     "address": "Адрес",
     "version": "Версия",

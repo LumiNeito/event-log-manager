@@ -2,8 +2,8 @@ import { INITIAL_FILTERS } from "./store";
 
 export const selectHasActiveFilters = (state: {
     status: string | null;
-    stationInput: string;
-    stationSearch: string;
+    searchInput: string;
+    searchString: string;
 }) =>
     state.status !== INITIAL_FILTERS.status ||
-    state.stationSearch !== INITIAL_FILTERS.stationSearch;
+    state.searchString !== INITIAL_FILTERS.searchString;

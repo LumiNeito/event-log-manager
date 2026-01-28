@@ -33,6 +33,11 @@ export const getSecurityEventsColumns = (
       key: 'id',
     },
     {
+      title: t('table.userName'),
+      dataIndex: 'userName',
+      key: 'userName',
+    },
+    {
       title: t('table.stationName'),
       dataIndex: 'stationName',
       key: 'stationName',

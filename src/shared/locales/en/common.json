@@ -1,10 +1,37 @@
-
 {
   "title": "Security Events",
-  "search_placeholder": "Enter value",
+  "searchPlaceholder": "Client name, station name",
+  "page": "page",
   "status": {
     "login": "Login",
     "logout": "Logout",
-    "fileAccess": "File access"
+    "fileAccess": "File Access",
+    "placeholder": "Status"
+  },
+  "table": {
+    "code": "Code",
+    "clientId": "Client ID",
+    "userName": "Client Name",
+    "stationName": "Station Name",
+    "address": "Address",
+    "version": "Version",
+    "conf": "Config",
+    "state": "State",
+    "status": "Status",
+    "date": "Send Time"
+  },
+  "details": {
+    "title": "Workstation Status",
+    "userInfo": "User Information",
+    "code": "Code",
+    "clientId": "Client ID",
+    "stationName": "Station Name",
+    "ipAddress": "IP Address",
+    "version": "Version",
+    "effectiveConfig": "Effective Configuration",
+    "appliedConfig": "Applied Configuration",
+    "status": "Status",
+    "stationState": "Station State",
+    "statusDate": "Status Date"
   }
 }

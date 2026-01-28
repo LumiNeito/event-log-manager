@@ -14,7 +14,7 @@ export const SecurityEventFilters = () => {
                 value={filters.status}
                 onChange={filters.setStatus}
             />
-            <SecurityEventSearch value={filters.stationInput} onChange={filters.setStationInput} />
+            <SecurityEventSearch value={filters.searchInput} onChange={filters.setSearchInput} />
             {hasActiveFilters && <ResetFiltersButton resetFilters={filters.resetFilters} />}
         </Flex>
     )

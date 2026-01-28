@@ -5,6 +5,7 @@ export interface EventItem {
     key: string;
     code: string;
     id: string;
+    userName: string;
     stationName: string;
     address: string;
     version: string;
