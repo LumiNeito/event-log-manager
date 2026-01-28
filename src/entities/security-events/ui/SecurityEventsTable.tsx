@@ -63,7 +63,7 @@ export const SecurityEventsTable = ({
         <>
             <Table dataSource={data}
                 rowKey="key"
-                scroll={{ y: height, x: 'max-content' }}
+                scroll={{ y: "calc(100vh - 280px)", x: 'max-content' }}
                 sticky
                 locale={{ emptyText: <Empty description={t('table.noData')} /> }}
                 pagination={{
